@@ -35,6 +35,7 @@ var objects;
         Player.prototype.Move = function () {
             //need a reference to the stage createjs object to get mouse position
             this.x = objects.Game.stage.mouseX;
+            this.y = objects.Game.stage.mouseY;
             //this will eventually be replaced with the keyboard input
         };
         Player.prototype.CheckBound = function () {
@@ -45,6 +46,13 @@ var objects;
             //left boundary
             if (this.x <= this.halfW) {
                 this.x = this.halfW;
+            }
+            if (this.y >= 720 - this.halfH) {
+                this.y = 720 - this.halfH;
+            }
+            //left boundary
+            if (this.y <= this.halfH) {
+                this.y = this.halfH;
             }
         };
         return Player;
