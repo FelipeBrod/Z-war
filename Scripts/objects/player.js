@@ -33,10 +33,8 @@ var objects;
         Player.prototype.Reset = function () {
         };
         Player.prototype.Move = function () {
-            //need a reference to the stage createjs object to get mouse position
             this.x = objects.Game.stage.mouseX;
             this.y = objects.Game.stage.mouseY;
-            //this will eventually be replaced with the keyboard input
         };
         Player.prototype.CheckBound = function () {
             //right boundary
