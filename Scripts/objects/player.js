@@ -23,8 +23,8 @@ var objects;
             return _this;
         }
         Player.prototype.Start = function () {
-            this.x = 320;
-            this.y = 700;
+            this.x = 640;
+            this.y = 600;
         };
         Player.prototype.Update = function () {
             this.Move();
@@ -39,8 +39,8 @@ var objects;
         };
         Player.prototype.CheckBound = function () {
             //right boundary
-            if (this.x >= 640 - this.halfW) {
-                this.x = 640 - this.halfW;
+            if (this.x >= 1280 - this.halfW) {
+                this.x = 1280 - this.halfW;
             }
             //left boundary
             if (this.x <= this.halfW) {

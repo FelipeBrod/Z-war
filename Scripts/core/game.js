@@ -13,9 +13,9 @@
         { id: "nextButton", src: "./Assets/NextButton.png" },
         { id: "previousButton", src: "./Assets/PreviousButton.png" },
         { id: "background", src: "./Assets/Background.png" },
+        { id: "background2", src: "./Assets/Background2.png" },
         { id: "player", src: "./Assets/Survivor.png" },
-        { id: "enemy", src: "./Assets/Zombie_1.png" },
-        { id: "enemy2", src: "./Assets/Zombie_2.png" }
+        { id: "enemy", src: "./Assets/Zombie_1.png" }
     ];
     function Init() {
         console.log("Initializing Start");

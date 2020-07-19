@@ -16,14 +16,16 @@ module objects {
             this.CheckBound();
         }
         public Reset():void{
-            this.x = Math.floor(Math.random() * 540) + 50;
-            this.y = Math.floor(Math.random() * -800) - 50;
+        
+            this.y = Math.floor(Math.random() * -350);
+            this.x = Math.floor(Math.random() * 1100) + 50;
+           
         }
         public Move():void{
             this.y += 2;
         }
         public CheckBound():void{
-            if(this.y >= 900 + this.halfH + 25){
+            if(this.y >= 800 + this.halfH + 25){
                 this.Reset();
             }
         }

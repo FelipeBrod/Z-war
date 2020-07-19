@@ -25,8 +25,9 @@ var scenes;
         StartScene.prototype.Start = function () {
             //Initialize our objects for the scene
             this.background = new objects.Background(this.assetManager);
-            this.welcomeLabel = new objects.Label("Welcome to School", "60px", "Consolas", "#ffffff", 320, 240, true);
-            this.startButton = new objects.Button(this.assetManager, "nextButton", 320, 300);
+            this.welcomeLabel = new objects.Label("Z-War", "60px", "Consolas", "#ffffff", 640, 240, true);
+            this.welcomeSubLabel = new objects.Label("Low Survival Chance", "30px", "Consolas", "#ffffff", 640, 300, true);
+            this.startButton = new objects.Button(this.assetManager, "nextButton", 1100, 500);
             this.Main();
         };
         StartScene.prototype.Update = function () {
@@ -36,6 +37,7 @@ var scenes;
             //Add items to the scene
             this.addChild(this.background);
             this.addChild(this.welcomeLabel);
+            this.addChild(this.welcomeSubLabel);
             this.addChild(this.startButton);
             this.startButton.on("click", this.startButtonClick);
         };

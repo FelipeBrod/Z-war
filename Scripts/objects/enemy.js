@@ -31,14 +31,14 @@ var objects;
             this.CheckBound();
         };
         Enemy.prototype.Reset = function () {
-            this.x = Math.floor(Math.random() * 540) + 50;
-            this.y = Math.floor(Math.random() * -800) - 50;
+            this.y = Math.floor(Math.random() * -350);
+            this.x = Math.floor(Math.random() * 1100) + 50;
         };
         Enemy.prototype.Move = function () {
             this.y += 2;
         };
         Enemy.prototype.CheckBound = function () {
-            if (this.y >= 900 + this.halfH + 25) {
+            if (this.y >= 800 + this.halfH + 25) {
                 this.Reset();
             }
         };
