@@ -2,8 +2,19 @@ module objects{
     export class Player extends objects.GameObject{
         //variables
         //constructor
+
+        public rightPressed = false;
+        public leftPressed = false;
+        public upKeyPressed = false;
+        public downKeyPressed = false;
+
         constructor(assetManager:createjs.LoadQueue){
             super(assetManager, "player");
+
+            
+
+            document.addEventListener("keydown", this.keyDownHandler, false);
+            document.addEventListener("keyup", this.keyUpHandler, false);
 
             this.Start();
         }
@@ -14,68 +25,63 @@ module objects{
         }
 
         public Update():void{
+            
             this.Move();
             this.CheckBound();
         }
 
-        public Reset():void{
-
+        public Reset():void{  
         }
 
-        public Move():void{
-            //need a reference to the stage createjs object to get mouse position
-            this.x = objects.Game.stage.mouseX;
-            this.y = objects.Game.stage.mouseY;
-            function keyboardInput(event: KeyboardEvent) {
-                // PRESS LEFT ARROW OR 'A' KEY
-                if (event.keyCode == 37 || event.keyCode == 65) {
-                   this.x -= 5;
-                   console.log('move left');
+        
+                   
+       keyDownHandler(e : any):void {
+                if(e.key == "Right" || e.key == "ArrowRight"|| e.key == "d") {
+                    this.rightPressed = true;  
+                    this.x += 5;                        
+                    console.log("Right!")                  
+                                                                         
                 }
-                // PRESS UP ARROW OR 'W' KEY
-                else if (event.keyCode == 38 || event.keyCode == 87) {
-                   this.y -= 5;
-                   console.log('move up');
+                else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
+                    this.leftPressed = true;
+                    this.x -= 5;
+                    console.log("Left!")  
                 }
-                // PRESS RIGHT ARROW OR 'D' KEY
-                else if (event.keyCode == 39 || event.keyCode == 68 ) {
-                   this.x += 5;
-                   console.log('move down');
+                else if(e.key == "Up" || e.key=="ArrowUp"|| e.key == "w"){
+                    this.upKeyPressed = true;
+                    console.log("Up!")  
+                    this.y -= 5;
                 }
-                // PRESS DOWN ARROW OR 'S' KEY
-                else if (event.keyCode == 40 || event.keyCode == 83 ) {
-                   this.y += 5;
-                   console.log('move right');
+                 else if(e.key == "Down" || e.key=="ArrowDown" || e.key == "s"){
+                    this.downKeyPressed = true;
+                    console.log("Down!")  
+                    this.y += 5;
                 }
-             }
-
-            // window.onkeydown = movement;
-            // function movement(e){
-            //     switch (e.keyCode){
-            //     case 37:
-            //         this.x -= 2;
-            //         console.log('move left');
-            //         break;
-            //     case 38:
-            //         this.y += 2;
-            //         console.log('move up');
-            //         break;
-            //     case 39:
-            //         this.x += 2;
-            //         console.log('move right');
-            //         break;
-            //     case 40:
-            //         this.y -= 2;
-            //         console.log('move down');
-            //         break;
-            //     }
-            // }
+            }
+                
+        
+            
+      keyUpHandler(e: any):void{
+            if(e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
+                this.rightPressed = false;
+                
+            }
+            else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
+                this.leftPressed = false;
+            }
+            else if(e.key == "Up" || e.key=="ArrowUp" || e.key == "w"){
+                this.upKeyPressed = false;
+            }
+             else if(e.key == "Down" || e.key=="ArrowDown" || e.key == "s"){
+                this.downKeyPressed = false;
+            }
         }
-
     
-
-
-
+            
+          
+        
+    
+    
         public CheckBound():void{
             //right boundary
             if(this.x >= 1280 -this.halfW)
