@@ -23,11 +23,9 @@ module objects{
         }
 
         public Move():void{
-<<<<<<< HEAD
             //need a reference to the stage createjs object to get mouse position
             this.x = objects.Game.stage.mouseX;
             this.y = objects.Game.stage.mouseY;
-=======
             function keyboardInput(event: KeyboardEvent) {
                 // PRESS LEFT ARROW OR 'A' KEY
                 if (event.keyCode == 37 || event.keyCode == 65) {
@@ -50,7 +48,6 @@ module objects{
                    console.log('move right');
                 }
              }
->>>>>>> master
 
             // window.onkeydown = movement;
             // function movement(e){
