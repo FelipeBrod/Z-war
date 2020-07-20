@@ -17,6 +17,8 @@ var objects;
         __extends(Player, _super);
         function Player(assetManager) {
             var _this = _super.call(this, assetManager, "player") || this;
+            document.addEventListener("keydown", _this.onKeyDown.bind(_this), false);
+            document.addEventListener("keyup", _this.keyUpHandler.bind(_this), false);
             _this.Start();
             return _this;
         }
@@ -31,50 +33,46 @@ var objects;
         Player.prototype.Reset = function () {
         };
         Player.prototype.Move = function () {
-            document.addEventListener("keydown", keyDownHandler, false);
-            document.addEventListener("keyup", keyUpHandler, false);
-            function keyDownHandler(e) {
-                if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
-                    this.rightPressed = true;
-                    console.log("Right!");
-                    this.x += 5;
-                }
-                else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                    this.leftPressed = true;
-                    console.log("Left!");
-                    this.x -= 5;
-                }
-                else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
-                    this.upKeyPressed = true;
-                    console.log("Up!");
-                    this.y -= 5;
-                }
-                else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
-                    this.downKeyPressed = true;
-                    console.log("Down!");
-                    this.y += 5;
-                }
-            }
             if (this.leftPressed) {
                 this.x -= 5;
             }
             else if (this.rightPressed) {
                 this.x += 5;
-                console.log("Right!");
             }
-            function keyUpHandler(e) {
-                if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
-                    this.rightPressed = false;
-                }
-                else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                    this.leftPressed = false;
-                }
-                else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
-                    this.upKeyPressed = false;
-                }
-                else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
-                    this.downKeyPressed = false;
-                }
+            else if (this.downKeyPressed) {
+                this.y += 5;
+            }
+            else if (this.upKeyPressed) {
+                this.y -= 5;
+            }
+        };
+        Player.prototype.onKeyDown = function (e) {
+            if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
+                this.rightPressed = true;
+            }
+            else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
+                this.leftPressed = true;
+            }
+            else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
+                this.upKeyPressed = true;
+            }
+            else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
+                this.downKeyPressed = true;
+                console.log("Down!");
+            }
+        };
+        Player.prototype.keyUpHandler = function (e) {
+            if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
+                this.rightPressed = false;
+            }
+            else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
+                this.leftPressed = false;
+            }
+            else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
+                this.upKeyPressed = false;
+            }
+            else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
+                this.downKeyPressed = false;
             }
         };
         Player.prototype.CheckBound = function () {
