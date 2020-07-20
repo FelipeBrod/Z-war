@@ -3,19 +3,16 @@ module objects{
         //variables
         //constructor
 
-        public rightPressed = false;
-        public leftPressed = false;
-        public upKeyPressed = false;
-        public downKeyPressed = false;
+        
+        leftPressed:boolean;
+        upKeyPressed:boolean;
+        downKeyPressed:boolean;
+        rightPressed: boolean;
 
         constructor(assetManager:createjs.LoadQueue){
             super(assetManager, "player");
 
             
-
-            document.addEventListener("keydown", this.keyDownHandler, false);
-            document.addEventListener("keyup", this.keyUpHandler, false);
-
             this.Start();
         }
 
@@ -25,43 +22,57 @@ module objects{
         }
 
         public Update():void{
-            
+             
+
             this.Move();
             this.CheckBound();
+            
         }
 
-        public Reset():void{  
-        }
-
+        public Reset():void
+        {  
+        }        
         
-                   
-       keyDownHandler(e : any):void {
+        public Move():void{     
+
+            document.addEventListener("keydown",keyDownHandler, false);
+            document.addEventListener("keyup", keyUpHandler, false);             
+               
+                 
+         function keyDownHandler(e:any):void {
                 if(e.key == "Right" || e.key == "ArrowRight"|| e.key == "d") {
-                    this.rightPressed = true;  
-                    this.x += 5;                        
-                    console.log("Right!")                  
-                                                                         
+                    this.rightPressed = true; 
+                    console.log("Right!");
+                    this.x += 5;                                                     
+                                                         
                 }
                 else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                    this.leftPressed = true;
-                    this.x -= 5;
-                    console.log("Left!")  
+                    this.leftPressed = true;                   
+                    console.log("Left!");
+                    this.x -= 5; 
                 }
-                else if(e.key == "Up" || e.key=="ArrowUp"|| e.key == "w"){
+                else if(e.key == "Up" || e.key== "ArrowUp"|| e.key == "w"){
                     this.upKeyPressed = true;
-                    console.log("Up!")  
+                    console.log("Up!"); 
                     this.y -= 5;
                 }
-                 else if(e.key == "Down" || e.key=="ArrowDown" || e.key == "s"){
+                 else if(e.key == "Down" || e.key== "ArrowDown" || e.key == "s"){
                     this.downKeyPressed = true;
-                    console.log("Down!")  
+                    console.log("Down!");  
                     this.y += 5;
                 }
             }
-                
-        
+
+            if(this.leftPressed){
+                this.x -=5;
+            }
+            else if(this.rightPressed){
+                 this.x +=5;
+                 console.log("Right!");
+         }
+                       
             
-      keyUpHandler(e: any):void{
+      function keyUpHandler(e : any):void{
             if(e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
                 this.rightPressed = false;
                 
@@ -75,11 +86,10 @@ module objects{
              else if(e.key == "Down" || e.key=="ArrowDown" || e.key == "s"){
                 this.downKeyPressed = false;
             }
+      
+          }  
         }
-    
-            
-          
-        
+
     
     
         public CheckBound():void{
