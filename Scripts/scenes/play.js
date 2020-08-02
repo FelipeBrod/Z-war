@@ -31,14 +31,21 @@ var scenes;
             for (var i = 0; i < this.enemyNum; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
             }
+            this.scoreBoard = new managers.Scoreboard();
+            this.scoreBoard.x = 10;
+            this.scoreBoard.y = 10;
+            this.bullet = new objects.Bullet(this.assetManager, this.player.x, this.player.y);
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            var _this = this;
             //this.background.Update();
             this.player.Update();
+            this.bullet.Update();
             //this.enemy.Update();
             this.enemies.forEach(function (e) {
                 e.Update();
+                managers.Collision.Check(_this.player, e);
             });
         };
         PlayScene.prototype.Main = function () {
@@ -49,6 +56,9 @@ var scenes;
             this.enemies.forEach(function (e) {
                 _this.addChild(e);
             });
+            this.addChild(this.bullet);
+            //this.addChild(this.bullet);
+            this.addChild(this.scoreBoard);
             //register for the click events
         };
         return PlayScene;

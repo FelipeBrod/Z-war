@@ -37,7 +37,7 @@ var scenes;
             this.previousButton.on("click", this.previousButtonClick);
         };
         GameOverScene.prototype.previousButtonClick = function () {
-            objects.Game.currentScene = config.Scene.GAME;
+            managers.Game.currentScene = config.Scene.GAME;
         };
         return GameOverScene;
     }(objects.Scene));

@@ -2,19 +2,8 @@ module objects{
     export class Player extends objects.GameObject{
         //variables
         //constructor
-
-        
-        leftPressed:boolean;
-        upKeyPressed:boolean;
-        downKeyPressed:boolean;
-        rightPressed: boolean;
-
         constructor(assetManager:createjs.LoadQueue){
-            super(assetManager, "player");
-
-            document.addEventListener("keydown", this.onKeyDown.bind(this), false);
-            document.addEventListener("keyup", this.keyUpHandler.bind(this), false);             
-               
+            super(assetManager, "player");               
             
             this.Start();
         }
@@ -36,74 +25,16 @@ module objects{
         {  
         }        
         
-        public Move():void{     
-
-            if(this.leftPressed){
-                this.x -=5;
-                
-                
+        public Move():void{
+            if(managers.Game.keyboardManager.moveLeft)
+            {
+                this.x -= 7.5;
             }
-            else if(this.rightPressed){
-                 this.x +=5; 
-                 
-                               
-                }
-                else if(this.downKeyPressed){
-                    this.y +=5; 
-                   
-                                  
-                   }
-                   else if(this.upKeyPressed){
-                    this.y -=5; 
-                    
-                                  
-                   }
+            if(managers.Game.keyboardManager.moveRight)
+            {
+                this.x += 7.5;
+            }
         }
-                 
-         onKeyDown(e:any):void {
-                if(e.key == "Right" || e.key == "ArrowRight"|| e.key == "d") {
-                    this.rightPressed = true; 
-                    
-                                                                     
-                                                         
-                }
-                else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                    this.leftPressed = true;                   
-                    
-                  
-                }
-                else if(e.key == "Up" || e.key== "ArrowUp"|| e.key == "w"){
-                    this.upKeyPressed = true;
-                   
-                }
-                 else if(e.key == "Down" || e.key== "ArrowDown" || e.key == "s"){
-                    this.downKeyPressed = true;
-                    console.log("Down!");  
-                    
-                }
-            }
-
-            
-         
-                       
-            
-      keyUpHandler(e : any):void{
-            if(e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
-                this.rightPressed = false;
-                
-            }
-            else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                this.leftPressed = false;
-            }
-            else if(e.key == "Up" || e.key=="ArrowUp" || e.key == "w"){
-                this.upKeyPressed = false;
-            }
-             else if(e.key == "Down" || e.key=="ArrowDown" || e.key == "s"){
-                this.downKeyPressed = false;
-            }
-      
-          }  
-        
 
     
     

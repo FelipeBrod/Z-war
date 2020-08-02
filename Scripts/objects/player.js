@@ -15,10 +15,10 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
+        //variables
+        //constructor
         function Player(assetManager) {
             var _this = _super.call(this, assetManager, "player") || this;
-            document.addEventListener("keydown", _this.onKeyDown.bind(_this), false);
-            document.addEventListener("keyup", _this.keyUpHandler.bind(_this), false);
             _this.Start();
             return _this;
         }
@@ -33,46 +33,11 @@ var objects;
         Player.prototype.Reset = function () {
         };
         Player.prototype.Move = function () {
-            if (this.leftPressed) {
-                this.x -= 5;
+            if (managers.Game.keyboardManager.moveLeft) {
+                this.x -= 7.5;
             }
-            else if (this.rightPressed) {
-                this.x += 5;
-            }
-            else if (this.downKeyPressed) {
-                this.y += 5;
-            }
-            else if (this.upKeyPressed) {
-                this.y -= 5;
-            }
-        };
-        Player.prototype.onKeyDown = function (e) {
-            if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
-                this.rightPressed = true;
-            }
-            else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                this.leftPressed = true;
-            }
-            else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
-                this.upKeyPressed = true;
-            }
-            else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
-                this.downKeyPressed = true;
-                console.log("Down!");
-            }
-        };
-        Player.prototype.keyUpHandler = function (e) {
-            if (e.key == "Right" || e.key == "ArrowRight" || e.key == "d") {
-                this.rightPressed = false;
-            }
-            else if (e.key == "Left" || e.key == "ArrowLeft" || e.key == "a") {
-                this.leftPressed = false;
-            }
-            else if (e.key == "Up" || e.key == "ArrowUp" || e.key == "w") {
-                this.upKeyPressed = false;
-            }
-            else if (e.key == "Down" || e.key == "ArrowDown" || e.key == "s") {
-                this.downKeyPressed = false;
+            if (managers.Game.keyboardManager.moveRight) {
+                this.x += 7.5;
             }
         };
         Player.prototype.CheckBound = function () {

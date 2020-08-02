@@ -8,13 +8,15 @@
     //store current scene information
     var currentScene;
     var currentState;
+    var keyboardManager;
     assetManifest = [
         { id: "startButton", src: "./Assets/StartButton.png" },
         { id: "nextButton", src: "./Assets/NextButton.png" },
         { id: "previousButton", src: "./Assets/PreviousButton.png" },
         { id: "background", src: "./Assets/Background.png" },
         { id: "player", src: "./Assets/Survivor.png" },
-        { id: "enemy", src: "./Assets/Zombie_1.png" }
+        { id: "enemy", src: "./Assets/Zombie_1.png" },
+        { id: "bullet", src: "./Assets/Bullet.png" }
     ];
     function Init() {
         console.log("Initializing Start");
@@ -31,15 +33,17 @@
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", Update);
         //set up default game states -- State Machine
-        objects.Game.stage = stage;
-        objects.Game.currentScene = config.Scene.START;
+        managers.Game.stage = stage;
+        managers.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
+        keyboardManager = new managers.Keyboard;
+        managers.Game.keyboardManager = keyboardManager;
         Main();
     }
     function Update() {
         //has my state changed since my last check?
-        if (currentState != objects.Game.currentScene) {
-            console.log("Changing scene to " + objects.Game.currentScene);
+        if (currentState != managers.Game.currentScene) {
+            console.log("Changing scene to " + managers.Game.currentScene);
             Main();
         }
         currentScene.Update();
@@ -48,7 +52,7 @@
     function Main() {
         console.log("Game Start");
         //finite state machine
-        switch (objects.Game.currentScene) {
+        switch (managers.Game.currentScene) {
             case config.Scene.START:
                 stage.removeAllChildren();
                 currentScene = new scenes.StartScene(assetManager);
@@ -65,7 +69,7 @@
                 stage.addChild(currentScene);
                 break;
         }
-        currentState = objects.Game.currentScene;
+        currentState = managers.Game.currentScene;
     }
     window.onload = Init;
 })();

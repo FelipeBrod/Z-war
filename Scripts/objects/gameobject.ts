@@ -9,6 +9,7 @@ module objects{
         public height: number;
         public halfW: number;
         public halfH: number;
+        public isColliding: boolean;
 
         //constructor
         constructor(assetManager:createjs.LoadQueue, imageString:string){
@@ -29,6 +30,8 @@ module objects{
             //registration points
             this.regX = this.halfW;
             this.regY = this.halfH;
+            
+            this.isColliding = false;
         }
 
         public Start():void{
