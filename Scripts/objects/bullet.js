@@ -32,7 +32,7 @@ var objects;
         Bullet.prototype.Reset = function () {
         };
         Bullet.prototype.Move = function () {
-            this.y -= 2;
+            this.y -= 25;
         };
         Bullet.prototype.CheckBound = function () {
         };

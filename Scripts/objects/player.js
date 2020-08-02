@@ -39,6 +39,12 @@ var objects;
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 7.5;
             }
+            if (managers.Game.keyboardManager.moveUp) {
+                this.y -= 7.5;
+            }
+            if (managers.Game.keyboardManager.moveDown) {
+                this.y += 7.5;
+            }
         };
         Player.prototype.CheckBound = function () {
             //right boundary

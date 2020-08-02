@@ -22,7 +22,7 @@ module objects{
         }
         
         public Move():void{
-            this.y -= 2;
+            this.y -= 25;
         }
 
         public CheckBound():void{
