@@ -4,11 +4,11 @@ module scenes{
 
         private background:objects.Background;
         private player:objects.Player;
-        //private enemy:objects.Enemy;
         private enemies:objects.Enemy[];
         private enemyNum:number;
         private scoreBoard:managers.Scoreboard;
         private bullet:objects.Bullet;
+        private oneShot: boolean;
 
         //constructor
         constructor(assetManager:createjs.LoadQueue){
@@ -23,6 +23,7 @@ module scenes{
             this.player = new objects.Player(this.assetManager);
             //this.enemy = new objects.Enemy(this.assetManager);
             this.enemies = new Array<objects.Enemy>();
+            this.bullet = new objects.Bullet(this.assetManager);
             this.enemyNum = 5;
             for(let i = 0; i < this.enemyNum; i++){
                 this.enemies[i] = new objects.Enemy(this.assetManager);
@@ -30,39 +31,47 @@ module scenes{
 
             this.scoreBoard = new managers.Scoreboard();
             this.scoreBoard.x = 10;
-            this.scoreBoard.y = 10;
-
-            this.bullet = new objects.Bullet(this.assetManager, this.player.x, this.player.y);
-
-            
+            this.scoreBoard.y = 10;              
+            this.bullet
             this.Main();
-        }
-
-        public Update():void{
-            //this.background.Update();
-            this.player.Update();
-            this.bullet.Update();
-            //this.enemy.Update();
-            this.enemies.forEach(e => {
-                e.Update();
-                managers.Collision.Check(this.player, e);
-            })
         }
 
         public Main():void{
             this.addChild(this.background);
             this.addChild(this.player);
-            //this.addChild(this.enemy);
+
+            if(managers.Game.keyboardManager.shoot && this.oneShot)
+            {
+                this.oneShot = false;
+                console.log("in if, shoot");
+                this.addChild(this.bullet);                         
+            } 
+            this.oneShot = true;
+            
             this.enemies.forEach(e => {
                 this.addChild(e);
             });
-            
-
-            this.addChild(this.bullet);
-            //this.addChild(this.bullet);
+        
             this.addChild(this.scoreBoard);
             //register for the click events
             
         }
+        public Update():void{
+            //this.background.Update();
+            this.player.Update();
+            //this.enemy.Update();
+            this.enemies.forEach(e => {
+                e.Update();
+                managers.Collision.Check(this.player, e);
+            })
+                            
+            
+        }
+
+        
     }
 }
+    
+
+
+

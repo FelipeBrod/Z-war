@@ -18,7 +18,8 @@ module objects{
             this.Move();
         }
 
-        public Reset():void{
+            public Reset():void{
+
         }
         
         public Move():void{

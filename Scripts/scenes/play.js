@@ -27,6 +27,7 @@ var scenes;
             this.player = new objects.Player(this.assetManager);
             //this.enemy = new objects.Enemy(this.assetManager);
             this.enemies = new Array();
+            this.bullet = new objects.Bullet(this.assetManager);
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
@@ -34,32 +35,34 @@ var scenes;
             this.scoreBoard = new managers.Scoreboard();
             this.scoreBoard.x = 10;
             this.scoreBoard.y = 10;
-            this.bullet = new objects.Bullet(this.assetManager, this.player.x, this.player.y);
+            this.bullet;
             this.Main();
-        };
-        PlayScene.prototype.Update = function () {
-            var _this = this;
-            //this.background.Update();
-            this.player.Update();
-            this.bullet.Update();
-            //this.enemy.Update();
-            this.enemies.forEach(function (e) {
-                e.Update();
-                managers.Collision.Check(_this.player, e);
-            });
         };
         PlayScene.prototype.Main = function () {
             var _this = this;
             this.addChild(this.background);
             this.addChild(this.player);
-            //this.addChild(this.enemy);
+            if (managers.Game.keyboardManager.shoot && this.oneShot) {
+                this.oneShot = false;
+                console.log("in if, shoot");
+                this.addChild(this.bullet);
+            }
+            this.oneShot = true;
             this.enemies.forEach(function (e) {
                 _this.addChild(e);
             });
-            this.addChild(this.bullet);
-            //this.addChild(this.bullet);
             this.addChild(this.scoreBoard);
             //register for the click events
+        };
+        PlayScene.prototype.Update = function () {
+            var _this = this;
+            //this.background.Update();
+            this.player.Update();
+            //this.enemy.Update();
+            this.enemies.forEach(function (e) {
+                e.Update();
+                managers.Collision.Check(_this.player, e);
+            });
         };
         return PlayScene;
     }(objects.Scene));
