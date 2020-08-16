@@ -16,10 +16,11 @@ var objects;
     var Background = /** @class */ (function (_super) {
         __extends(Background, _super);
         //constructor
-        function Background(assetManager) {
-            var _this = _super.call(this, assetManager.getResult("background")) || this;
+        function Background() {
+            var _this = _super.call(this, managers.Game.assetManager.getResult("background")) || this;
             //variables
             _this.speedY = 0.5;
+            console.log("Creating the background");
             _this.Start();
             return _this;
         }

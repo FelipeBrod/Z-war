@@ -15,27 +15,28 @@ var objects;
 (function (objects) {
     var Bullet = /** @class */ (function (_super) {
         __extends(Bullet, _super);
-        function Bullet(assetManager, x, y) {
-            if (x === void 0) { x = 0; }
-            if (y === void 0) { y = 0; }
-            var _this = _super.call(this, assetManager, "bullet") || this;
-            _this.x = x;
-            _this.y = y;
+        function Bullet() {
+            var _this = _super.call(this, "bullet") || this;
             _this.Start();
             return _this;
         }
         Bullet.prototype.Start = function () {
+            this.speedX = 0;
+            this.speedY = -10;
+            this.Reset();
         };
         Bullet.prototype.Update = function () {
             this.Move();
         };
         Bullet.prototype.Reset = function () {
+            this.x = -5000;
+            this.y = -5000;
         };
         Bullet.prototype.Move = function () {
-            this.y -= 25;
+            this.y += this.speedY;
         };
-        Bullet.prototype.CheckBound = function () {
-        };
+        Bullet.prototype.Main = function () { };
+        Bullet.prototype.CheckBounds = function () { };
         return Bullet;
     }(objects.GameObject));
     objects.Bullet = Bullet;

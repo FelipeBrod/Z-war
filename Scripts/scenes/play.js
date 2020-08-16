@@ -16,28 +16,55 @@ var scenes;
     var PlayScene = /** @class */ (function (_super) {
         __extends(PlayScene, _super);
         //constructor
-        function PlayScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+        function PlayScene() {
+            var _this = _super.call(this) || this;
+            _this.isDying = false;
             _this.Start();
             return _this;
         }
         PlayScene.prototype.Start = function () {
             //Inititalize our variables
-            this.background = new objects.Background(this.assetManager);
-            this.player = new objects.Player(this.assetManager);
+            this.background = new objects.Background();
+            this.player = new objects.Player();
             //this.enemy = new objects.Enemy(this.assetManager);
             this.enemies = new Array();
             this.bullet = new objects.Bullet(this.assetManager);
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager);
+                this.enemies[i] = new objects.Enemy();
             }
             this.scoreBoard = new managers.Scoreboard();
             this.scoreBoard.x = 10;
             this.scoreBoard.y = 10;
+<<<<<<< HEAD
             this.bullet;
             this.Main();
         };
+=======
+            this.Main();
+        };
+        PlayScene.prototype.Update = function () {
+            var _this = this;
+            //this.background.Update();
+            this.player.Update();
+            //this.enemy.Update();
+            this.enemies.forEach(function (e) {
+                e.Update();
+                _this.player.isDead = managers.Collision.Check(_this.player, e);
+                _this.player.Bullets.forEach(function (bullet) {
+                    e.isDead = managers.Collision.Check(bullet, e);
+                });
+                if (_this.player.isDead && !_this.isDying) {
+                    _this.isDying = true;
+                    _this.removeChild(_this.player);
+                }
+                if (e.isDead) {
+                    _this.isDying = true;
+                    _this.removeChild(e);
+                }
+            });
+        };
+>>>>>>> master
         PlayScene.prototype.Main = function () {
             var _this = this;
             this.addChild(this.background);
@@ -54,6 +81,7 @@ var scenes;
             this.addChild(this.scoreBoard);
             //register for the click events
         };
+<<<<<<< HEAD
         PlayScene.prototype.Update = function () {
             var _this = this;
             //this.background.Update();
@@ -63,6 +91,11 @@ var scenes;
                 e.Update();
                 managers.Collision.Check(_this.player, e);
             });
+=======
+        PlayScene.prototype.handleDying = function () {
+            this.isDying = false;
+            managers.Game.currentScene = config.Scene.OVER;
+>>>>>>> master
         };
         return PlayScene;
     }(objects.Scene));

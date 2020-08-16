@@ -15,10 +15,9 @@ var objects;
 (function (objects) {
     var Enemy = /** @class */ (function (_super) {
         __extends(Enemy, _super);
-        //variables
         //constructor
-        function Enemy(assetManager) {
-            var _this = _super.call(this, assetManager, "enemy") || this;
+        function Enemy() {
+            var _this = _super.call(this, "enemy") || this;
             _this.Start();
             return _this;
         }

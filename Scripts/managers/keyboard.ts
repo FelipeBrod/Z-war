@@ -42,7 +42,7 @@ module managers{
 
                 case config.Keys.SPACE:
                     this.shoot = true;
-                    console.log("Shoot");
+                    //console.log("Shoot");
                 break;
             }
         }
@@ -69,7 +69,6 @@ module managers{
                 break;
 
                 case config.Keys.SPACE:
-
                     this.shoot = false;
                 break;
             }

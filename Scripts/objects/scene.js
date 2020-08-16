@@ -15,11 +15,10 @@ var objects;
 (function (objects) {
     var Scene = /** @class */ (function (_super) {
         __extends(Scene, _super);
+        //variables
         //constructor
-        function Scene(assetManager) {
-            var _this = _super.call(this) || this;
-            _this.assetManager = assetManager;
-            return _this;
+        function Scene() {
+            return _super.call(this) || this;
         }
         //methods
         Scene.prototype.Start = function () { };

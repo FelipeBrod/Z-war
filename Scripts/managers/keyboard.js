@@ -29,7 +29,7 @@ var managers;
                     break;
                 case config.Keys.SPACE:
                     this.shoot = true;
-                    console.log("Shoot");
+                    //console.log("Shoot");
                     break;
             }
         };
