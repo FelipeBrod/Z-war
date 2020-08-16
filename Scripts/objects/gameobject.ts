@@ -12,8 +12,8 @@ module objects{
         public isColliding: boolean;
 
         //constructor
-        constructor(assetManager:createjs.LoadQueue, imageString:string){
-            super(assetManager.getResult(imageString));
+        constructor(imageString:string){
+            super(imageString);
 
             this.name = imageString;
 

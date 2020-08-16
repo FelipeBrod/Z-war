@@ -5,8 +5,8 @@ module scenes{
         private previousButton: objects.Button;
 
         //constructor
-        constructor(assetManager:createjs.LoadQueue){
-            super(assetManager);
+        constructor(){
+            super();
 
             this.Start();
         }
@@ -17,7 +17,7 @@ module scenes{
             this.gameOverLabel = new objects.Label(
                 "Game Over!", "40px", "Consolas", "#000000", 320, 240, true);
             
-            this.previousButton = new objects.Button(this.assetManager, "previousButton", 120, 300);
+            this.previousButton = new objects.Button("previousButton", 120, 300);
             this.Main();
         }
 

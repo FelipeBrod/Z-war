@@ -4,23 +4,19 @@ var managers;
         function Collision() {
         }
         Collision.Check = function (obj1, obj2) {
-            //create a temp Vec2 object for each objects passed in
+            // Create a temp Vec2 object for each object passed in.
             var P1 = new math.Vec2(obj1.x, obj1.y);
             var P2 = new math.Vec2(obj2.x, obj2.y);
             if (math.Vec2.Distance(P1, P2) < (obj1.halfH + obj2.halfH)) {
                 if (!obj2.isColliding) {
-                    //react to the collision
-                    //check what did it collide with
-                    switch (obj2.name) {
-                        case "enemy":
-                            createjs.Sound.play("explosion");
-                            break;
-                    }
+                    // A collision has occurred
                     obj2.isColliding = true;
+                    return true;
                 }
-            }
-            else {
-                obj2.isColliding = false;
+                else {
+                    obj2.isColliding = false;
+                    return false;
+                }
             }
         };
         return Collision;

@@ -8,31 +8,30 @@ module scenes{
         private enemies:objects.Enemy[];
         private enemyNum:number;
         private scoreBoard:managers.Scoreboard;
-        private bullet:objects.Bullet;
+        private isDying:boolean = false;
 
         //constructor
-        constructor(assetManager:createjs.LoadQueue){
-            super(assetManager);
+        constructor(){
+            super();
 
             this.Start();
         }
 
         public Start():void {
             //Inititalize our variables
-            this.background = new objects.Background(this.assetManager);
-            this.player = new objects.Player(this.assetManager);
+            this.background = new objects.Background();
+            this.player = new objects.Player();
             //this.enemy = new objects.Enemy(this.assetManager);
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
             for(let i = 0; i < this.enemyNum; i++){
-                this.enemies[i] = new objects.Enemy(this.assetManager);
+                this.enemies[i] = new objects.Enemy();
             }
 
             this.scoreBoard = new managers.Scoreboard();
             this.scoreBoard.x = 10;
             this.scoreBoard.y = 10;
 
-            this.bullet = new objects.Bullet(this.assetManager, this.player.x, this.player.y);
 
             
             this.Main();
@@ -41,11 +40,26 @@ module scenes{
         public Update():void{
             //this.background.Update();
             this.player.Update();
-            this.bullet.Update();
             //this.enemy.Update();
             this.enemies.forEach(e => {
                 e.Update();
-                managers.Collision.Check(this.player, e);
+                this.player.isDead = managers.Collision.Check(this.player, e);
+
+                this.player.Bullets.forEach(bullet => {
+                    e.isDead = managers.Collision.Check(bullet, e)
+                });
+
+                if(this.player.isDead && !this.isDying)
+                {
+                    this.isDying = true;
+                    this.removeChild(this.player);
+                }
+
+                if(e.isDead)
+                {
+                    this.isDying = true;
+                    this.removeChild(e);
+                }
             })
         }
 
@@ -57,12 +71,14 @@ module scenes{
                 this.addChild(e);
             });
             
-
-            this.addChild(this.bullet);
-            //this.addChild(this.bullet);
             this.addChild(this.scoreBoard);
             //register for the click events
             
+        }
+
+        private handleDying(){
+            this.isDying = false;
+            managers.Game.currentScene = config.Scene.OVER;
         }
     }
 }

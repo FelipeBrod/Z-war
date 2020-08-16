@@ -7,8 +7,8 @@ module scenes {
         private startButton:objects.Button;
         
         //constructor
-        constructor(assetManager:createjs.LoadQueue){
-            super(assetManager);
+        constructor(){
+            super();
             this.Start();
         }
 
@@ -16,10 +16,10 @@ module scenes {
         public Start():void {
             //Initialize our objects for the scene
 
-            this.background = new objects.Background(this.assetManager);
+            this.background = new objects.Background();
             this.welcomeLabel = new objects.Label("Z-War", "60px", "Consolas", "#ffffff", 640, 240, true);
             this.welcomeSubLabel = new objects.Label("Low Survival Chance", "30px", "Consolas", "#ffffff", 640, 300, true);
-            this.startButton = new objects.Button(this.assetManager, "nextButton", 1100, 500);
+            this.startButton = new objects.Button("nextButton", 1100, 500);
             this.Main();
         }
 

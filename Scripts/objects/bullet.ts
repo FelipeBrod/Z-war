@@ -2,30 +2,32 @@ module objects{
     export class Bullet extends objects.GameObject{
             
 
-        constructor(assetManager:createjs.LoadQueue, x:number = 0, y:number = 0){
-            super(assetManager, "bullet");
-
-            this.x = x;
-            this.y = y;
+        constructor(){
+            super("bullet");
 
             this.Start();
         }
 
         public Start():void{
-
+            this.speedX = 0;
+            this.speedY = -10;
+            this.Reset();
         }
-        public Update():void{
+
+        public Update():void {
             this.Move();
         }
 
-        public Reset():void{
-        }
-        
-        public Move():void{
-            this.y -= 25;
+        public Reset():void {
+            this.x = -5000;
+            this.y = -5000;
         }
 
-        public CheckBound():void{
+        public Move():void {
+            this.y += this.speedY;
         }
+
+        public Main():void {}
+        public CheckBounds():void {}
     }
 }

@@ -16,8 +16,8 @@ var scenes;
     var GameOverScene = /** @class */ (function (_super) {
         __extends(GameOverScene, _super);
         //constructor
-        function GameOverScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+        function GameOverScene() {
+            var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
@@ -25,7 +25,7 @@ var scenes;
         GameOverScene.prototype.Start = function () {
             //Inittalize our variables
             this.gameOverLabel = new objects.Label("Game Over!", "40px", "Consolas", "#000000", 320, 240, true);
-            this.previousButton = new objects.Button(this.assetManager, "previousButton", 120, 300);
+            this.previousButton = new objects.Button("previousButton", 120, 300);
             this.Main();
         };
         GameOverScene.prototype.Update = function () {

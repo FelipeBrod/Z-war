@@ -16,18 +16,18 @@ var scenes;
     var StartScene = /** @class */ (function (_super) {
         __extends(StartScene, _super);
         //constructor
-        function StartScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+        function StartScene() {
+            var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         //methods
         StartScene.prototype.Start = function () {
             //Initialize our objects for the scene
-            this.background = new objects.Background(this.assetManager);
+            this.background = new objects.Background();
             this.welcomeLabel = new objects.Label("Z-War", "60px", "Consolas", "#ffffff", 640, 240, true);
             this.welcomeSubLabel = new objects.Label("Low Survival Chance", "30px", "Consolas", "#ffffff", 640, 300, true);
-            this.startButton = new objects.Button(this.assetManager, "nextButton", 1100, 500);
+            this.startButton = new objects.Button("nextButton", 1100, 500);
             this.Main();
         };
         StartScene.prototype.Update = function () {

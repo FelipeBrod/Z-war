@@ -71,23 +71,24 @@
         switch(managers.Game.currentScene){
             case config.Scene.START:
                 stage.removeAllChildren();
-                currentScene = new scenes.StartScene(assetManager);
+                currentScene = new scenes.StartScene();
                 stage.addChild(currentScene);
             break;
 
             case config.Scene.GAME:
                 stage.removeAllChildren();
-                currentScene = new scenes.PlayScene(assetManager);
+                currentScene = new scenes.PlayScene();
                 stage.addChild(currentScene);
             break;
 
             case config.Scene.OVER:
                 stage.removeAllChildren();
-                currentScene = new scenes.GameOverScene(assetManager);
+                currentScene = new scenes.GameOverScene();
                 stage.addChild(currentScene);
             break;
         }
         currentState = managers.Game.currentScene;
+        managers.Game.currentSceneObject = currentScene;
     }
 
 
