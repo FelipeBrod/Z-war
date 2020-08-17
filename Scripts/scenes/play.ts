@@ -66,7 +66,7 @@ module scenes {
                     e.isDead = managers.Collision.Check(b, e);
                         if(e.isDead)
                         {   
-                            if(Math.random()<0.80 && !this.oneItem)
+                            if(Math.random()<0.25 && !this.oneItem)
                             {                          
                                 this.drop = new objects.item(e.x, e.y)
                                 this.addChild(this.drop)   
