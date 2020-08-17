@@ -15,28 +15,26 @@ var scenes;
 (function (scenes) {
     var GameOverScene = /** @class */ (function (_super) {
         __extends(GameOverScene, _super);
-        //constructor
+        // Constructor
         function GameOverScene() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        //method
+        // Method
         GameOverScene.prototype.Start = function () {
-            //Inittalize our variables
-            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Consolas", "#000000", 320, 240, true);
-            this.previousButton = new objects.Button("previousButton", 120, 300);
+            // Initialize our variables
+            this.gameOverLabel = new objects.Label("Game Over!", "80px", "Consolas", "#000000", 720, 240, true);
+            this.backButton = new objects.Button("NextButton", 1100, 500);
             this.Main();
         };
-        GameOverScene.prototype.Update = function () {
-        };
+        GameOverScene.prototype.Update = function () { };
         GameOverScene.prototype.Main = function () {
             this.addChild(this.gameOverLabel);
-            this.addChild(this.previousButton);
-            //register for the click events
-            this.previousButton.on("click", this.previousButtonClick);
+            this.addChild(this.backButton);
+            this.backButton.on("click", this.backButtonClick);
         };
-        GameOverScene.prototype.previousButtonClick = function () {
+        GameOverScene.prototype.backButtonClick = function () {
             managers.Game.currentScene = config.Scene.GAME;
         };
         return GameOverScene;

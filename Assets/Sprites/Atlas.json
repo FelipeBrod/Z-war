@@ -1,0 +1,32 @@
+{
+
+"images": [
+    "Atlas2.png"
+],
+
+"framerate": 20,
+"frames": [
+    [0, 0, 108, 164, 0, 0, 0],
+    
+    [108, 0, 108, 164, 0, 0, 0],
+    [216, 0, 108, 164, 0, 0, 0],
+    [324, 0, 112, 112, 0, 0, 0],
+    [0, 164, 155, 125, 0, 0, 0],
+    [155, 164, 230, 130, 0, 0, 0]
+],
+
+"animations": {
+
+    "survivor" : {  "frames": [1]},
+    "survivor-shoot_shotgun": { "frames": [1, 0, 2] },
+    "Zombie": { "frames": [3] },
+    "NextButton": { "frames": [4] },
+    "Bullet": { "frames": [5] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:8d7b1fb2223e0b27095b39df9dc6637a:9d4a72a56c8c481741f9671c9ccb7764:25f17efe6f9b88fe925cae06aa785e18$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

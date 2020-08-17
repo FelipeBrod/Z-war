@@ -1,20 +1,20 @@
 module objects {
-    export class Button extends createjs.Bitmap {
-        //variables
-        //constructor
+    export class Button extends objects.GameObject {
+        // Variables
+        // Constructor
         constructor(imageString:string, x:number = 0, y:number = 0) {
             super(imageString);
 
-            //default position
+            // Default position
             this.x = x;
             this.y = y;
 
-            //set up event handler
+            // Set up event handlers
             this.on("mouseover", this.mouseOver);
             this.on("mouseout", this.mouseOut);
         }
-        //methods
-        //event handlers
+        // Methods
+        // Event Handlers
         private mouseOver():void {
             this.alpha = 0.7;
         }

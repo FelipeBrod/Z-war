@@ -15,70 +15,78 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        //constructor
+        // Constructor
         function Player() {
-            var _this = _super.call(this, "player") || this;
-            _this.bulletCount = 0;
+            var _this = _super.call(this, "survivor") || this;
+            _this.laserCount = 0;
             _this.Start();
             return _this;
         }
         Player.prototype.Start = function () {
             this.x = 640;
-            this.y = 600;
+            this.y = 700;
             this.isDead = false;
-            this.Bullets = new Array();
+            this.Lasers = new Array();
+            this.Update();
         };
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
-            this.BulletFire();
-            this.Bullets.forEach(function (bullet) {
-                bullet.Update();
+            this.LaserFire();
+            this.Lasers.forEach(function (laser) {
+                laser.Update();
             });
         };
-        Player.prototype.Reset = function () {
-        };
+        Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
+            // I need a reference to the "STAGE" createjs object to get mouse position
+            // this.x = objects.Game.stage.mouseX;
+            // This will eventually be replaced with keyboard input
             if (managers.Game.keyboardManager.moveLeft) {
-                this.x -= 7.5;
+                this.x -= 5.5;
             }
             if (managers.Game.keyboardManager.moveRight) {
-                this.x += 7.5;
+                this.x += 5.5;
             }
             if (managers.Game.keyboardManager.moveUp) {
-                this.y -= 7.5;
+                this.y -= 5.5;
             }
             if (managers.Game.keyboardManager.moveDown) {
-                this.y += 7.5;
+                this.y += 5.5;
             }
+            if (managers.Game.keyboardManager.shoot) {
+            }
+            // Maybe xbox controller....maybe...
         };
         Player.prototype.CheckBound = function () {
-            //right boundary
-            if (this.x >= 1280 - this.halfW) {
-                this.x = 1280 - this.halfW;
+            // Right boundary
+            if (this.x >= 1270 - this.halfW) {
+                // I have collided with the right boundary
+                this.x = 1270 - this.halfW;
             }
-            //left boundary
+            // Left boundary
             if (this.x <= this.halfW) {
                 this.x = this.halfW;
             }
-            if (this.y >= 720 - this.halfH) {
-                this.y = 720 - this.halfH;
+            if (this.y >= 720 - this.halfW) {
+                // I have collided with the right boundary
+                this.y = 720 - this.halfW;
             }
-            //left boundary
-            if (this.y <= this.halfH) {
-                this.y = this.halfH;
+            // Left boundary
+            if (this.y <= this.halfW) {
+                this.y = this.halfW;
             }
         };
-        Player.prototype.BulletFire = function () {
+        Player.prototype.LaserFire = function () {
             var ticker = createjs.Ticker.getTicks();
             if (!this.isDead && managers.Game.keyboardManager.shoot && (ticker % 10 == 0)) {
-                this.bulletSpawn = new math.Vec2(this.x, this.y - this.halfH);
-                var bullet = new objects.Bullet();
-                bullet.x = this.bulletSpawn.x;
-                bullet.y = this.bulletSpawn.y;
-                this.Bullets[this.bulletCount] = bullet;
-                managers.Game.currentSceneObject.addChild(bullet);
-                this.bulletCount++;
+                this.laserSpawn = new math.Vec2(this.x, this.y - this.halfH);
+                var laser = new objects.Laser();
+                laser.x = this.laserSpawn.x + 90;
+                laser.y = this.laserSpawn.y;
+                this.Lasers[this.laserCount] = laser;
+                managers.Game.currentSceneObject.addChild(laser);
+                this.laserCount++;
             }
         };
         return Player;

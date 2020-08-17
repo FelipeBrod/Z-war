@@ -1,23 +1,22 @@
-module objects{  //module = Namespace
-    export class Label extends createjs.Text{ //export = public
-        //varibles
-        //constructor
+module objects {    // Module = Namespace
+    export class Label extends createjs.Text { // export = public
+        // Variables
+        // Constructor
         constructor(labelString:string, fontSize:string, fontFamily:string, fontColor:string, 
-            x:number = 0, y:number = 0, isCentered:boolean = false){
+            x:number = 0, y:number = 0, isCentered:boolean = false) {
 
                 super(labelString, fontSize + " " + fontFamily, fontColor);
 
-                //set the registration point if true to be in the middle
-                if(isCentered){
+                // Set the registration point if true to be in the middle
+                if(isCentered) {
                     this.regX = this.getMeasuredWidth() * 0.5;
                     this.regY = this.getMeasuredHeight() * 0.5;
                 }
 
-                //set initial position
+                // Set initial position
                 this.x = x;
                 this.y = y;
         }
-
-        //methods
+        // Methods
     }
 }

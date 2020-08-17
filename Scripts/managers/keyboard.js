@@ -1,14 +1,14 @@
 var managers;
 (function (managers) {
     var Keyboard = /** @class */ (function () {
-        //constructor
+        // Constructor
         function Keyboard() {
             this.enabled = true;
-            //listen for keyup and keydown events through the DOM
+            // Listen for keyup and keydown events through the DOM
             document.addEventListener("keydown", this.onKeyDown.bind(this), false);
             document.addEventListener("keyup", this.onKeyUp.bind(this), false);
         }
-        //methods
+        // Methods
         Keyboard.prototype.onKeyDown = function (event) {
             switch (event.keyCode) {
                 case config.Keys.W:
@@ -28,8 +28,8 @@ var managers;
                     this.moveRight = true;
                     break;
                 case config.Keys.SPACE:
+                    console.log("pew pew");
                     this.shoot = true;
-                    //console.log("Shoot");
                     break;
             }
         };
@@ -53,6 +53,7 @@ var managers;
                     break;
                 case config.Keys.SPACE:
                     this.shoot = false;
+                    console.log("pew pew off");
                     break;
             }
         };

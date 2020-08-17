@@ -15,7 +15,7 @@ var managers;
 (function (managers) {
     var Scoreboard = /** @class */ (function (_super) {
         __extends(Scoreboard, _super);
-        //constructor
+        // Constructor
         function Scoreboard() {
             var _this = _super.call(this) || this;
             _this.Init();
@@ -43,14 +43,16 @@ var managers;
             enumerable: false,
             configurable: true
         });
+        // Methods
         Scoreboard.prototype.Init = function () {
-            this.scoreLabel = new objects.Label("Score: 999999", "20px", "Consolas", "#FFFF00", 0, 0, false);
-            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Consolas", "#FFFF00", 1100, 0, false);
+            // Create our labels
+            this.scoreLabel = new objects.Label("Score: 0000000", "20px", "Consolas", "#FFFF00", 0, 0, false);
+            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Consolas", "#FFFF00", 460, 0, false);
+            // Set a default score
             this.score = 0;
             this.highScore = 0;
             this.Main();
         };
-        //methods
         Scoreboard.prototype.Main = function () {
             this.addChild(this.scoreLabel);
             this.addChild(this.highScoreLabel);

@@ -15,36 +15,31 @@ var objects;
 (function (objects) {
     var GameObject = /** @class */ (function (_super) {
         __extends(GameObject, _super);
-        //constructor
+        // Constructor
         function GameObject(imageString) {
-            var _this = _super.call(this, imageString) || this;
+            var _this = _super.call(this, managers.Game.textureAtlas, imageString) || this;
             _this.name = imageString;
             _this.Init();
             return _this;
         }
         GameObject.prototype.Init = function () {
-            //initialize all properties of my object
+            // Initialize all the properties of my object
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.halfW = this.width * 0.5;
             this.halfH = this.height * 0.5;
-            //registration points
+            // Registration points
             this.regX = this.halfW;
             this.regY = this.halfH;
             this.isColliding = false;
         };
-        GameObject.prototype.Start = function () {
-        };
-        GameObject.prototype.Update = function () {
-        };
-        GameObject.prototype.Reset = function () {
-        };
-        GameObject.prototype.Move = function () {
-        };
-        GameObject.prototype.CheckBound = function () {
-        };
+        GameObject.prototype.Start = function () { };
+        GameObject.prototype.Update = function () { };
+        GameObject.prototype.Reset = function () { };
+        GameObject.prototype.Move = function () { };
+        GameObject.prototype.CheckBound = function () { };
         return GameObject;
-    }(createjs.Bitmap));
+    }(createjs.Sprite));
     objects.GameObject = GameObject;
 })(objects || (objects = {}));
 //# sourceMappingURL=gameobject.js.map

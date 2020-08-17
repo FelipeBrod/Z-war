@@ -15,26 +15,33 @@ var scenes;
 (function (scenes) {
     var StartScene = /** @class */ (function (_super) {
         __extends(StartScene, _super);
-        //constructor
+        // Constructor
         function StartScene() {
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
-        //methods
+        // Methods
         StartScene.prototype.Start = function () {
-            //Initialize our objects for the scene
+            // Initialize our objects for this scene
             this.background = new objects.Background();
             this.welcomeLabel = new objects.Label("Z-War", "60px", "Consolas", "#ffffff", 640, 240, true);
             this.welcomeSubLabel = new objects.Label("Low Survival Chance", "30px", "Consolas", "#ffffff", 640, 300, true);
-            this.startButton = new objects.Button("nextButton", 1100, 500);
+            this.startButton = new objects.Button("NextButton", 1100, 500);
+            this.welcomeLabel = new objects.Label("Z-War", "60px", "Consolas", "#FFFFFF", 320, 240, true);
+            // NOTE: PreloadJS manifest id
+            this.startButton = new objects.Button("NextButton", 1100, 600);
+            // Instantiate Sound
+            this.backgroundMusic = createjs.Sound.play("start_music");
+            this.backgroundMusic.loop = -1;
+            this.backgroundMusic.volume = 0.2;
             this.Main();
         };
         StartScene.prototype.Update = function () {
-            //this.background.Update();
+            // this.background.Update();
         };
         StartScene.prototype.Main = function () {
-            //Add items to the scene
+            // Add items to the scene
             this.addChild(this.background);
             this.addChild(this.welcomeLabel);
             this.addChild(this.welcomeSubLabel);
@@ -42,7 +49,7 @@ var scenes;
             this.startButton.on("click", this.startButtonClick);
         };
         StartScene.prototype.startButtonClick = function () {
-            //Change from START to GAME scene
+            // Change from START to GAME scene
             managers.Game.currentScene = config.Scene.GAME;
         };
         return StartScene;

@@ -15,22 +15,22 @@ var objects;
 (function (objects) {
     var Button = /** @class */ (function (_super) {
         __extends(Button, _super);
-        //variables
-        //constructor
+        // Variables
+        // Constructor
         function Button(imageString, x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             var _this = _super.call(this, imageString) || this;
-            //default position
+            // Default position
             _this.x = x;
             _this.y = y;
-            //set up event handler
+            // Set up event handlers
             _this.on("mouseover", _this.mouseOver);
             _this.on("mouseout", _this.mouseOut);
             return _this;
         }
-        //methods
-        //event handlers
+        // Methods
+        // Event Handlers
         Button.prototype.mouseOver = function () {
             this.alpha = 0.7;
         };
@@ -38,7 +38,7 @@ var objects;
             this.alpha = 1.0;
         };
         return Button;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Button = Button;
 })(objects || (objects = {}));
 //# sourceMappingURL=button.js.map

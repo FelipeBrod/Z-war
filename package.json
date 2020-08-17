@@ -1,25 +1,23 @@
 {
-  "name": "z-war",
+  "name": "comp397_s2020",
   "version": "1.0.0",
-  "description": "WebGameAss1\r Felipe Test2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FelipeBrod/Z-war.git"
+    "url": "git+https://github.com/wbalaniucCentennialCollege/COMP397_S2020.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FelipeBrod/Z-war/issues"
+    "url": "https://github.com/wbalaniucCentennialCollege/COMP397_S2020/issues"
   },
-  "homepage": "https://github.com/FelipeBrod/Z-war#readme",
+  "homepage": "https://github.com/wbalaniucCentennialCollege/COMP397_S2020#readme",
   "dependencies": {
-    "createjs": "^1.0.1",
     "easeljs": "^1.0.2",
-    "node.js": "0.0.1-security",
+    "lite-server": "^2.5.4",
     "preloadjs": "^1.0.1",
     "soundjs": "^1.0.1",
     "tweenjs": "^1.0.2"
@@ -29,5 +27,6 @@
     "@types/preloadjs": "^0.6.32",
     "@types/soundjs": "^0.6.28",
     "@types/tweenjs": "^1.0.1"
-  }
+  },
+  "description": ""
 }

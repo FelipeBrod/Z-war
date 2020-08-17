@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-war</title>
-    <!--CSS Section-->
-    <link rel = "stylesheet" href = "./Contents/game.css">
+    <title>COMP 397 - Web Game Programming</title>
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="./Contents/game.css">
 </head>
 <body>
-    <canvas id = "canvas" width = "1280" height="720"></canvas>
-    
-    <!--Dependencies-->
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <!-- Dependencies -->
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    
-    <!--GAME SCRIPTS-->
 
-    <!--Configuration files-->
+    <!-- GAME SCRIPTS -->
+    <!-- Configuration Files-->
     <script src="./Scripts/config/scene.js"></script>
     <script src="./Scripts/config/keys.js"></script>
     <script src="./Scripts/math/vec2.js"></script>
 
-    <!--Object Scripts-->
+    <!-- Object Scripts -->
     <script src="./Scripts/managers/game.js"></script>
     <script src="./Scripts/objects/label.js"></script>
     <script src="./Scripts/objects/scene.js"></script>
 
-    <!--Game Objects-->
+    <!--Game Objects -->
+    <script src="./Scripts/objects/gameobject.js"></script>
     <script src="./Scripts/objects/button.js"></script>
-    <script src="Scripts/objects/gameobject.js"></script>
     <script src="./Scripts/objects/background.js"></script>
     <script src="./Scripts/objects/player.js"></script>
     <script src="./Scripts/objects/enemy.js"></script>
-    <script src="./Scripts/objects/bullet.js"></script>
-    
-    <!--Game Managers-->
+    <script src="./Scripts/objects/Death.js"></script>
+    <script src="./Scripts/objects/laser.js"></script>
+    <script src="./Scripts/objects/item.js"></script>
+
+    <!-- Game Managers -->
     <script src="./Scripts/managers/keyboard.js"></script>
-    <script src="./Scripts/managers/collision.js"></script>
     <script src="./Scripts/managers/scoreboard.js"></script>
-    
-    <!--Scene Scripts-->
-    <script src="./Scripts/scenes/start.js"></script>
-    <script src="./Scripts/scenes/play.js"></script>
+    <script src="./Scripts/managers/collision.js"></script>
+
+    <!-- Scene Scripts -->
     <script src="./Scripts/scenes/gameover.js"></script>
+    <script src="./Scripts/scenes/play.js"></script>
+    <script src="./Scripts/scenes/start.js"></script>
 
     <script src="./Scripts/core/game.js"></script>
 </body>

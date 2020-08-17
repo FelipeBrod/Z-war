@@ -15,16 +15,16 @@ var objects;
 (function (objects) {
     var Background = /** @class */ (function (_super) {
         __extends(Background, _super);
-        //constructor
+        // Constructor
         function Background() {
             var _this = _super.call(this, managers.Game.assetManager.getResult("background")) || this;
-            //variables
+            // Variables
             _this.speedY = 0.5;
             console.log("Creating the background");
             _this.Start();
             return _this;
         }
-        //methods
+        // Functions
         Background.prototype.Start = function () {
             this.Reset();
         };
@@ -33,13 +33,13 @@ var objects;
             this.CheckBound();
         };
         Background.prototype.Reset = function () {
-            //reset the background's y position
+            // Reset my background y position.
             console.log("RESET!");
         };
         Background.prototype.Move = function () {
             this.y += this.speedY;
         };
-        //collision detection
+        // Collision Detection
         Background.prototype.CheckBound = function () {
             if (this.y >= 0) {
                 this.Reset();

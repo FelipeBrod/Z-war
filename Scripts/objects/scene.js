@@ -15,12 +15,12 @@ var objects;
 (function (objects) {
     var Scene = /** @class */ (function (_super) {
         __extends(Scene, _super);
-        //variables
-        //constructor
+        // Variables
+        // Constructor
         function Scene() {
             return _super.call(this) || this;
         }
-        //methods
+        // Methods
         Scene.prototype.Start = function () { };
         Scene.prototype.Update = function () { };
         Scene.prototype.Main = function () { };
